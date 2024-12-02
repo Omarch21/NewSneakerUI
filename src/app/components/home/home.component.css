@@ -1,0 +1,20 @@
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background-color:rgb(247, 247, 247);
+    height:100%;
+    width:100%;
+    z-index:1;
+}
+.welcome-message{
+    box-shadow: 0 2px 5px 1px rgb(224, 224, 224);
+    width:500px;
+    height:100px;
+    background-color:white;
+    color:black;
+    span{
+        color:black;
+    }
+}

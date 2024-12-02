@@ -1,0 +1,84 @@
+<body>
+    <div class="form-portion">
+        <div class="login-register-body">
+            <div class="login-register-button">
+                <div class="login-tab-btn" [ngClass]="{'tab-active': loginActive}" (click)="changeActiveTab('login')">
+                    <a>Login</a>
+                </div>
+                <div class="register-tab-btn" [ngClass]="{'tab-active': !loginActive}"
+                    (click)="changeActiveTab('register')">
+                    <a>Register</a>
+                </div>
+            </div>
+            <form class="login-opt" *ngIf="loginActive" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+                <h2>
+                    Login
+                </h2>
+                <div class="input-set">
+                    <span class="material-icons user-icon">person</span>
+                    <input type="text" placeholder="Email" formControlName="email">
+                </div>
+
+                <div class="input-set">
+                    <span class="material-icons password-icon">vpn_key</span>
+                    <input type="text" placeholder="Password" formControlName="password">
+                </div>
+
+                <button class="login-btn"> Login </button>
+            </form>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()" class="register-opt" *ngIf="!loginActive">
+                <h2>
+                    Register
+                </h2>
+                <div>
+                <div class="input-set">
+                    <span class="material-icons user-icon">person</span>
+                    <input type="text" placeholder="First and Last Name" formControlName="fullName">
+                </div>
+                <small *ngIf="this.registerForm.get('fullName')?.hasError('required') && this.registerForm.get('fullName')?.touched">
+                    This Field is Required
+                </small>
+                </div>
+
+                <div>
+                <div class="input-set">
+                    <span class="material-icons user-icon">mail</span>
+                    <input type="text" placeholder="Email" formControlName="email">
+                </div>
+                <small *ngIf="this.registerForm.get('email')?.hasError('email') && this.registerForm.get('email')?.touched">
+                    Must be in Email Format
+                </small>
+                <small *ngIf="this.registerForm.get('email')?.hasError('required') && this.registerForm.get('email')?.touched">
+                    This Field is Required
+                </small>
+                </div>
+
+                <div>
+                <div class="input-set">
+                    <span class="material-icons password-icon">vpn_key</span>
+                    <input type="text" placeholder="Password" formControlName="password">
+                </div>
+                <small *ngIf="this.registerForm.get('password')?.hasError('required') && this.registerForm.get('password')?.touched">
+                    This Field is Required
+                </small>
+                </div>
+
+                <div>
+                <div class="input-set">
+                    <span class="material-icons password-icon">vpn_key</span>
+                    <input type="text" placeholder="Confirm Password" formControlName="confirmPassword">
+                </div>
+                <small *ngIf="passwordsDontMatch">Passwords Dont Match</small>
+                <small *ngIf="this.registerForm.get('confirmPassword')?.hasError('required') && this.registerForm.get('confirmPassword')?.touched">
+                    This Field is Required
+                </small>
+                </div>
+
+                <button type="submit" class="register-btn" [disabled]="registerForm.invalid"> Register </button>
+            </form>
+        </div>
+    </div>
+    <div class="login-register-image">
+
+    </div>
+</body>

@@ -1,0 +1,147 @@
+body {
+    display: flex;
+}
+
+.top-nav {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.116);
+    display: flex;
+    align-items: center;
+
+    .logo {
+        position: absolute;
+        height: 100%;
+        width: 100px;
+        left: 10px;
+        display: flex;
+        align-items: center;
+        cursor:pointer;
+        img {
+            width: 75px;
+        }
+    }
+
+    .login {
+        position: absolute;
+        right: 10px;
+        width: 200px;
+        height: 40px;
+        background-color: rgb(211, 38, 38);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(235, 235, 235);
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .login:hover {
+        background-color: rgb(175, 32, 32);
+    }
+
+}
+
+body{
+    display:flex;
+    flex-direction:column;
+}
+
+.side-nav{
+    width: 80px;
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 5px 5px 2px rgb(224, 224, 224);
+    justify-content:space-between;
+    position:fixed;
+}
+
+.side-nav-main {
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.side-nav-logo {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px 1px rgb(224, 224, 224);
+    img {
+        width: 60%;
+    }
+}
+
+.side-nav-icon {
+    cursor:pointer;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+    span{
+        transition: color 0.4s ease;
+        color:rgb(158, 10, 10);
+        font-size:30px;
+    }
+    border-bottom: 1px solid rgb(158, 10, 10);
+    text-decoration:none;
+    
+}
+
+.account-icon{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:50px;
+    width:100%;
+    .account-button{
+        font-size:30px;
+        color:rgb(158, 10, 10);
+        cursor:pointer;
+    }
+    .account-button:hover + .hover-menu{
+        display:flex;
+    }
+}
+
+.hover-menu{
+    position:absolute;
+    left:50px;
+    bottom:25px;
+    height:100px;
+    width:100px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px 10px 10px 0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    border:1px solid black; 
+
+}
+.hover-menu:hover{
+    display:flex;
+}
+.active-link{
+    background-color: rgb(158, 10, 10) !important;
+    transition: color 0.3s ease;
+    span{
+        color:white;
+    }
+    
+}
+
+.page-content{
+    width: calc(100% - 90px);
+    margin-left:80px;
+    padding:5px;
+}

@@ -1,0 +1,126 @@
+body {
+    display: flex;
+    align-items: center;
+
+}
+
+.form-portion {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+
+.login-register-body {
+    height: 500px;
+    width: 400px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 5px 5px 0 rgb(190, 190, 190);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+
+    .login-register-button {
+        height: 40px;
+        display: flex;
+
+        .login-tab-btn,
+        .register-tab-btn {
+            cursor: pointer;
+            border-top-left-radius: 20px;
+            background-color: rgb(235, 235, 235);
+            border-right: 1px solid black;
+            height: 100%;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-tab-btn {
+            border: none !important;
+            border-radius: 0 20px 0 0 !important;
+        }
+    }
+}
+
+.login-register-image{
+    width:50%;
+    height:93.7vh;
+    background-image:url('./../../../../public/login-register-image.jpg');
+    background-position: center;
+    background-size: cover;
+
+}
+
+.login-opt,
+.register-opt {
+    height: 100%;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-set {
+    margin-top: 30px;
+    height: 35px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    input {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        height: 100%;
+        border: 1px solid rgb(221, 221, 221);
+        outline: none;
+        background-color: none;
+        padding-left: 35px;
+        color: black;
+    }
+
+    .user-icon,
+    .password-icon {
+        position: absolute;
+        left: 5px;
+        padding-right: 2px;
+        border-right: 1px solid black;
+    }
+}
+
+.login-btn,
+.register-btn {
+    margin-top: 50px;
+    height: 40px;
+    width: 200px;
+    background-color: rgb(211, 38, 38);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.register-btn {
+    margin-top: 25px !important;
+}
+
+.login-btn:hover {
+    background-color: rgb(175, 32, 32);
+}
+
+.register-btn:disabled{
+    background-color:rgb(170, 170, 170);
+    cursor:default;
+}
+.tab-active {
+    background-color: rgb(255, 255, 255) !important;
+}

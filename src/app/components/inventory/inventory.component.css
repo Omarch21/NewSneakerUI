@@ -1,0 +1,20 @@
+.content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    height:100%;
+}
+
+.inventory-menu{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:300px;
+    height:60px;
+    background-color:white;
+    border-radius:10px;
+    box-shadow: 0 2px 5px 1px rgb(224, 224, 224);
+}
