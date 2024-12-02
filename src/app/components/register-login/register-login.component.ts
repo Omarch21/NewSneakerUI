@@ -8,11 +8,10 @@ import { AuthService } from './service/auth.service';
 import { LoginRequest } from './models/loginRequest';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-register-login',
-  standalone: true,
-  imports: [MatIconModule, CommonModule, FormsModule, ReactiveFormsModule],
-  templateUrl: './register-login.component.html',
-  styleUrl: './register-login.component.css'
+    selector: 'app-register-login',
+    imports: [MatIconModule, CommonModule, FormsModule, ReactiveFormsModule],
+    templateUrl: './register-login.component.html',
+    styleUrl: './register-login.component.css'
 })
 export class RegisterLoginComponent {
 
