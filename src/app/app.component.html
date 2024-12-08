@@ -1,5 +1,5 @@
 <body>
-    <div class="top-nav" *ngIf="!authService.isUserLoggedIn">
+    <div class="top-nav" *ngIf="!(authService.isLoggedIn$ | async)">
         <div class="logo" (click)="goToLandingPage()">
             <img src="/sneaker-logo.png">
         </div>
@@ -7,7 +7,7 @@
             <a class="login-but">Login/Register</a>
         </div>
     </div>
-    <div *ngIf="authService.isUserLoggedIn" class="side-nav">
+    <div *ngIf="authService.isLoggedIn$ | async" class="side-nav">
         <div class="side-nav-main">
             <div class="side-nav-logo">
                 <img src="/sneaker-logo.png">
@@ -37,7 +37,7 @@
             </div>
         </a>
     </div>
-    <div [ngClass]="{ 'page-content': authService.isUserLoggedIn}">
+    <div [ngClass]="{ 'page-content': authService.isLoggedIn$ | async}">
         <router-outlet />
     </div>
 </body>

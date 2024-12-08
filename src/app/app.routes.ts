@@ -11,13 +11,14 @@ export const routes: Routes = [
     {
         path: '',
         title: 'Landing Page',
-        component: LandingComponent
+        component: LandingComponent,
+        canActivate: [unauthorizedUsers] //authed users still dont see left nav
     },
     {
         path: 'user',
         title: 'Account Management',
         component: RegisterLoginComponent,
-        canActivate: []
+        canActivate: [unauthorizedUsers]
     },
     {
         path: 'home',

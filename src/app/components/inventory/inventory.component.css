@@ -18,3 +18,83 @@
     border-radius:10px;
     box-shadow: 0 2px 5px 1px rgb(224, 224, 224);
 }
+.shoes{
+    display:flex;
+    gap:10px;
+    cursor:pointer;
+   
+}
+.shoe-form{
+    width:100%;
+    height:100%;
+}
+.first-row, .second-row, .third-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:100px;
+}
+.first-row{
+    height:200px;
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;;
+}
+.silhouette-input-div, .brand-select, .size-input-div, .price-div{
+    width:50%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.silhouette-input-div, .price-div{
+    justify-content:flex-start;
+}
+
+.silhouette-input, .price-input, .search-input{
+    width:200px;
+    height:30px;
+    outline:none;
+    border:none;
+    box-shadow: 0 1px 3px 1px rgb(224, 224, 224);
+    border:1px solid rgb(170, 170, 170);
+}
+
+.dropdowns{
+    width:120px;
+    height:35px;
+    box-shadow: 0 1px 3px 1px rgb(224, 224, 224);
+    border:1px solid rgb(170, 170, 170);
+    outline:none;
+}
+.search-div{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    .search-input{
+        width:550px;
+    }
+    
+}
+
+.shoeResult{
+    width:550px;
+    height:50px;
+    display:flex;
+    border:1px solid black;
+    box-shadow: 0 1px 3px 1px rgb(224, 224, 224);
+    border:1px solid rgb(170, 170, 170);
+    cursor:pointer;
+    img{
+        height:50px;
+        width:75px;
+    }
+    .shoe-text{
+        margin-left:50px;
+        height:100%;
+        display:flex;
+        align-items:end;
+    }
+}
