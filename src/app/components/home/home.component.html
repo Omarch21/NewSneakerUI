@@ -1,7 +1,85 @@
 <body>
     <div class="welcome-message">
-        <span> Welcome back {{user.username}}</span>
+        <span> Welcome back {{user?.username}}</span>
     </div>
 
+    <div class="stats">
+      
+        <div class="sneaker-charts">
+            <div class="numbers">
+                <div class="sneaker-amount">
+                    <h2>Sneaker Amount</h2>
+                    <div><span>{{sneakerCount}}</span><img width="60" height="60" src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-vitaly-gorbachev/60/external-sneaker-vacation-vitaliy-gorbachev-lineal-vitaly-gorbachev.png" alt="external-sneaker-vacation-vitaliy-gorbachev-lineal-vitaly-gorbachev"/></div>
+                </div>
+            </div>
+            <div class="charts">
+                <apx-chart class="chart-1"
+                [series]="series1"
+                [chart]="chartOptions1.chart!"
+                [xaxis]="chartOptions1.xaxis!"
+                [plotOptions]="chartOptions1.plotOptions!"
+                [dataLabels]="chartOptions1.dataLabels!"
+                [grid]="chartOptions1.grid!"
+                [stroke]="chartOptions1.stroke!"
+                [title]="chartOptions1.title!"
+                [markers]="chartOptions1.markers!"
+                [yaxis]="chartOptions1.yaxis!"
+                [fill]="chartOptions1.fill!"
+                [labels]="labels1"></apx-chart>
+                
+                <apx-chart
+                [series]="series2"
+                [chart]="chartOptions2.chart!"
+                [xaxis]="chartOptions2.xaxis!"
+                [plotOptions]="chartOptions2.plotOptions!"
+                [dataLabels]="chartOptions2.dataLabels!"
+                [grid]="chartOptions2.grid!"
+                [stroke]="chartOptions2.stroke!"
+                [title]="chartOptions2.title!"
+                [markers]="chartOptions2.markers!"
+                [yaxis]="chartOptions2.yaxis!"
+                [fill]="chartOptions2.fill!"
+                [labels]="labels2"></apx-chart>
+                
+                <apx-chart
+                [series]="series3"
+                [chart]="chartOptions3.chart!"
+                [xaxis]="chartOptions3.xaxis!"
+                [plotOptions]="chartOptions3.plotOptions!"
+                [dataLabels]="chartOptions3.dataLabels!"
+                [grid]="chartOptions3.grid!"
+                [stroke]="chartOptions3.stroke!"
+                [title]="chartOptions3.title!"
+                [markers]="chartOptions3.markers!"
+                [yaxis]="chartOptions3.yaxis!"
+                [fill]="chartOptions3.fill!"
+                [colors]="chartOptions3.colors!"
+                [labels]="labels3"></apx-chart>
+            </div>
+        </div>
+        
+        <div class="sneaker-releases">
+            <div class="sneaker-div">
+                <mat-spinner [diameter]="60" *ngIf="loadingReleases()"></mat-spinner>
+                <h4>Upcoming Releases </h4>
+                <div *ngFor="let release of releases" class="release">
+                    <img src="{{release?.imageURL}}">
+                    <div class="release-info">
+                        <span class="details">{{release.releaseDate}} - {{release.productCode}}</span>
+                        <a class="name" [href]="release.moreInfoSource" target="_blank">{{release.name}}  ${{release.retail}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    
+    <div class="news-container">
+            <div class="news" *ngFor="let ns of news">
+                <img [src]="ns.photoUrl" (click)="goTo(ns.url)">
+                <span class="title"> News </span>
+                <a class="body" [href]="ns.url" target="blank">{{ns.title}}</a>
+            </div>
+            <mat-spinner [diameter]="100" class="screen-spinner" *ngIf="loading()"></mat-spinner>
+    </div>
 </body>
 

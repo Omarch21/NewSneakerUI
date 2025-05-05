@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { User } from "../models/user";
+import { RegisterUser } from "../models/registerUser";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, finalize, map, Observable, of, tap, throwError } from "rxjs";
 import { LoginRequest } from "../models/loginRequest";
+import { User } from "../../../models/user";
 @Injectable({
     providedIn: 'root'
 })
@@ -13,7 +14,7 @@ export class AuthService{
     }
 
 
-    RegisterUser(user: User): Observable<any>{
+    RegisterUser(user: RegisterUser): Observable<any>{
         const url = 'https://localhost:7017/api/User/register';
         return this.http.post(url,{username: user.username, password: user.password}, {withCredentials: true});
     }
@@ -38,9 +39,9 @@ export class AuthService{
         )
     }
     
-    getLoggedInUserData(): Observable<any>{
+    getLoggedInUserData(): Observable<User>{
         const url = 'https://localhost:7017/api/User/GetUserData';
-        return this.http.get(url, {withCredentials: true})
+        return this.http.get<User>(url, {withCredentials: true})
     }
 
     checkLoggedIn(): Observable<boolean> {

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { confirmPasswordValidator } from './service/custom-validators'
-import { User } from './models/user';
+import { RegisterUser } from './models/registerUser';
 import { AuthService } from './service/auth.service';
 import { LoginRequest } from './models/loginRequest';
 import { Router } from '@angular/router';
@@ -46,7 +46,7 @@ export class RegisterLoginComponent {
     const fullName = this.registerForm.get('fullName')?.value ?? '';
     const [firstName = '', lastName = ''] = fullName.split(' ');
 
-    var user: User = {
+    var user: RegisterUser = {
       firstName: firstName,
       lastName: lastName,
       email: this.registerForm.get('email')?.value!,

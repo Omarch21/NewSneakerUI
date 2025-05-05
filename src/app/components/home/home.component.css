@@ -1,20 +1,182 @@
-body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+body {
+    display: flex;
     flex-direction:column;
-    background-color:rgb(247, 247, 247);
-    height:100%;
-    width:100%;
-    z-index:1;
+    background-color: rgb(247, 247, 247);
+    gap: 15px;
+    box-sizing: border-box;
+    padding: 0 5%;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
 }
-.welcome-message{
-    box-shadow: 0 2px 5px 1px rgb(224, 224, 224);
-    width:500px;
-    height:100px;
-    background-color:white;
-    color:black;
-    span{
-        color:black;
+
+.welcome-message {
+    grid-area: welcome-message;
+    width: 100%;
+    margin-top:50px;
+    height: 50px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+
+    span {
+        color: black;
+    }
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    height:75vh;
+    margin-top:15px;
+
+    
+    .sneaker-charts{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction:column;
+        width:85%;
+        height:100%;
+        background-color: rgb(252, 252, 252);
+        box-shadow: 0 2px 5px 1px rgb(224, 224, 224);
+        border-radius: 10px;
+
+        .charts{
+            height:70%;
+            width:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .numbers{
+            height:30%;
+            padding:50px;
+            div{
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+
+                span{
+                    font-size:2em;
+                    color:green;
+                }
+            }
+        }
+    }
+}
+
+.news-container {
+    height: 300px;
+    width: 100%;
+    margin-top:10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    position:relative;
+
+    .news {
+        min-height: 95%;
+        background-color: white;
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px 1px rgb(224, 224, 224);
+
+        .title {
+            font-weight: bold;
+            margin-left: 5%;
+            margin-top: 5px;
+            text-decoration: underline
+        }
+
+        .body {
+            margin-top: 10px;
+            text-align: center;
+            width: 100%;
+            color:black;
+            cursor:pointer;
+        }
+
+        .body:hover{
+            text-decoration:underline;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 4px 4px 0 0;
+            cursor:pointer;
+        }
+
+
+    }
+
+    mat-spinner{
+        position:absolute;
+        top:40%;
+        left:50%;
+    }
+}
+
+.sneaker-releases {
+    grid-area: releases;
+    width:14%;
+    height: 100%;
+    display:flex;
+    align-items:center;
+
+    .sneaker-div {
+        position:relative;
+        height: 92.5%;
+        background-color: rgb(252, 252, 252);
+        box-shadow: 0 2px 5px 1px rgb(224, 224, 224);
+        border-radius: 10px;
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .release {
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            img {
+                height: 75px;
+                width: 110px;
+            }
+
+            .release-info {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .details {
+                color: grey;
+            }
+
+            .name {
+                color: black;
+            }
+        }
+
+        h4 {
+            position: absolute;
+            top: 0;
+            left: 12.5%;
+        }
     }
 }

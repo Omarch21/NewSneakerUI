@@ -6,6 +6,7 @@ import { authorizedUsers } from './AuthGuards/authorizedUsers.guard';
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { ListViewComponent } from './components/list-view/list-view.component';
 import { unauthorizedUsers } from './AuthGuards/unauthorizedUsers.guard';
+import { SneakerInfoComponent } from './components/sneaker-info/sneaker-info.component';
 
 export const routes: Routes = [
     {
@@ -18,7 +19,7 @@ export const routes: Routes = [
         path: 'user',
         title: 'Account Management',
         component: RegisterLoginComponent,
-        canActivate: [unauthorizedUsers]
+        canActivate: []
     },
     {
         path: 'home',
@@ -33,15 +34,14 @@ export const routes: Routes = [
         canActivate: [authorizedUsers]
     },
     {
-        path: 'inventory',
-        title: 'Inventory',
-        component: InventoryComponent,
-        canActivate: [authorizedUsers]
-    },
-    {
         path: 'list-view',
         title: 'List View',
         component: ListViewComponent,
+        canActivate: [authorizedUsers]
+    },
+    {
+        path: 'inventory/sneaker/:id',
+        component: SneakerInfoComponent,
         canActivate: [authorizedUsers]
     }
 ];

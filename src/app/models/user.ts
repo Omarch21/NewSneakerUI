@@ -3,5 +3,6 @@ export interface User{
     lastName: string;
     email: string;
     username: string;
-    password: string;
+    phoneNumber: string;
+    id: number;
 }

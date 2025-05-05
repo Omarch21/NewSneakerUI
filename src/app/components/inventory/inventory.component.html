@@ -1,48 +1,47 @@
 <body class="content">
-    <div class="inventory-menu">
-        <button (click)="submitShoe(content)"> Add new</button>
-    </div>
+    <button class="add-button" (click)="openAddDialog()" mat-fab extended aria-label="Add Sneaker"> 
+        <mat-icon>add</mat-icon> Add Sneaker
+    </button>
+    <div class="sneaker-container">
+        <div *ngFor="let sneaker of sneakers" class="sneaker-div">
 
-  
+            <img [src]="sneaker.photoURL">
+
+            <span>{{sneaker.silhouette}} {{sneaker.nickname}}</span>
+            <div class="line"></div>
+            <div class="data">
+                <div class="price-div">
+                    <span>Price: {{sneaker.resellPrice}}</span>
+                    <div class="down" *ngIf="sneaker.resellPrice! < sneaker.retail!">
+                        <span class="material-icons">
+                            arrow_downward
+                        </span>
+                    </div>
+                    <div class="up" *ngIf="sneaker.resellPrice! > sneaker.retail!">
+                        <span class="material-icons">
+                            arrow_upward
+                        </span>
+                    </div>
+                    <label [ngStyle]="{ color: (sneaker.resellPrice! - sneaker.retail!) < 0 ? 'red' : 'green'}"
+                        style="margin-left:3px;">
+                        {{sneaker.resellPrice! - sneaker.retail!}}
+                    </label>
+                </div>
+                <span>Size: {{sneaker.size}}</span>
+            </div>
+            <span class="material-icons-outlined edit-button" (click)="openEdit(sneaker)" matTooltip="Edit Sneaker"
+                matTooltipPosition="left">
+                edit
+            </span>
+            <span class="material-icons-outlined info-button" (click)="goShoeInfo(sneaker.id)"
+                matTooltip="See Sneaker Info" matTooltipPosition="left">
+                info
+            </span>
+        </div>
+    </div>
 </body>
 
-<ng-template #content let-modal>
 
-    <form [formGroup]="shoeForm" (ngSubmit)="submit()" class="shoe-form">
-        <div class="first-row">
-            <div class="search-div">
-                <input type="text" [formControl]="userSearch" placeholder="Search..." class="search-input">
-            </div>
-            <mat-spinner *ngIf="isLoading.asObservable() | async" [diameter]="50"></mat-spinner>
-            <div *ngFor="let result of shoeDivs" class="shoeResult" (click)="sendFlightClub(result)">
-                <img src="{{result.imageLink}}">
-                <div class="shoe-text">
-                    <p> {{result.name}}</p>
-                </div>
-            </div>
-        </div>
-        <div class="second-row">
-            <div class="brand-select">
-                <select type="text" placeholder="Brand" class="dropdowns">
-                    <option selected>Pick Brand</option>
-                    <option *ngFor="let brand of brands" value={{brand}}>{{brand}}</option>
-                </select>
-            </div>
-            <div class="silhouette-input-div">
-                <input type="text" placeholder="Silhouette" class="silhouette-input">
-            </div>
-        </div>
-        <div class="third-row">
-            <div class="size-input-div">
-                <select type="text" class="dropdowns size-dropdown">
-                    <option selected>Size</option>
-                    <option *ngFor="let size of shoeSizes" value={{size}}>{{size}}</option>
-                </select>
-            </div>
-            <div class="price-div">
-                <input type="text" placeholder="Purchase Price" class="price-input">
-            </div>
-        </div>
-    </form>
-
-</ng-template>
+<div class="main-loading-screen" *ngIf="isLoading()">
+    <mat-spinner [diameter]="100" class="screen-spinner"></mat-spinner>
+</div>

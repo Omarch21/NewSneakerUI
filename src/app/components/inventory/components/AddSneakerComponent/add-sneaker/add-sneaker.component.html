@@ -1,0 +1,100 @@
+<div class="screen" #content>
+
+    <form class="tab" [ngClass]="{'hidden': activeTab !== 1}">
+
+        <ng-container
+            *ngTemplateOutlet="title; context: {$implicit: 'Search for Sneaker you want to Add'}"></ng-container>
+        <div class="tab-content">
+            <div>
+                <div class="search-div">
+                    <input type="text" #shoeSearch [formControl]="userSearch" placeholder="Search..." class="input-box"
+                        [(ngModel)]="search">
+                    <span class="material-icons-outlined" (click)="clearSearch()" *ngIf="isClearable()">
+                        close
+                    </span>
+                </div>
+
+                <div *ngIf="showSearch()">
+                    <div *ngFor="let result of shoeDivs" class="shoeResult" (click)="populateForm(result);changeTab(2)">
+                        <img src="{{result.imageLink}}">
+                        <div class="shoe-text">
+                            <p> {{result.name}}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+
+    <form class="tab" [formGroup]="shoeForm" [ngClass]="{'hidden': activeTab !== 2}">
+        <ng-container *ngTemplateOutlet="title; context: {$implicit: 'Enter Sneaker Data'}"></ng-container>
+        <div class="tab-content">
+            <div class="row">
+                <div class="input-div">
+                    <select type="text" placeholder="Brand" class="dropdowns" formControlName="brand">
+                        <option selected>Pick Brand</option>
+                        <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
+                    </select>
+                </div>
+                <div class="input-div">
+                    <small style="color:red;font-size:12px;"
+                        *ngIf="shoeForm.get('silhouette')?.touched && shoeForm.get('silhouette')?.hasError('required') ">Required</small>
+                    <input type="text" placeholder="Silhouette" class="input-box" formControlName="silhouette">
+                </div>
+                <div class="input-div">
+                    <small style="color:red;font-size:12px;"
+                        *ngIf="shoeForm.get('name')?.touched && shoeForm.get('name')?.hasError('required') ">Required</small>
+                    <input type="text" placeholder="Name" class="input-box" formControlName="name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-div">
+                    <small style="color:red;font-size:12px;"
+                        *ngIf="shoeForm.get('shoeSize')?.touched && shoeForm.get('shoeSize')?.hasError('notANumber') ">Required</small>
+                    <select type="text" class="dropdowns" formControlName="shoeSize">
+                        <option selected>Size</option>
+                        <option *ngFor="let size of shoeSizes" value={{size}}>{{size}}</option>
+                    </select>
+                </div>
+                <div class="input-div">
+                    <small style="color:red;font-size:12px;"
+                        *ngIf="shoeForm.get('cost')?.touched && shoeForm.get('cost')?.hasError('required') ">Required</small>
+                    <input type="text" placeholder="Purchase Price" class="input-box" formControlName="cost">
+                </div>
+                <div class="input-div">
+                    <small style="color:red;font-size:12px;"
+                        *ngIf="shoeForm.get('resellURL')?.touched && shoeForm.get('resellURL')?.hasError('required') ">Required</small>
+                    <input type="text" placeholder="Resell URL" class="input-box" formControlName="resellURL">
+                </div>
+            </div>
+            <button class="add-sneaker" [disabled]="shoeForm.invalid" [ngClass]="{'disabled': shoeForm.invalid}"
+                (click)="addShoe();">Add Shoe</button>
+        </div>
+
+    </form>
+
+    <ng-template #title let-data>
+        <div class="tab-title">
+            <div class="left-command">
+                <span class="material-icons-outlined arrow-icn" (click)="changeTab(1)" matTooltip="Go back"
+                    matTooltipPosition="above" *ngIf="!(isLoadingSearch.asObservable() | async) && activeTab > 1">
+                    arrow_back
+                </span>
+                <mat-spinner *ngIf="isLoadingSearch.asObservable() | async" [diameter]="35"></mat-spinner>
+            </div>
+            <span class="title">{{data}}</span>
+            <div class="right-command">
+                <span class="material-icons-outlined close-icn" (click)="close()" matTooltip="Close"
+                    matTooltipPosition="above">
+                    close
+                </span>
+            </div>
+        </div>
+    </ng-template>
+
+    <div class="main-loading-screen" *ngIf="isLoading()">
+        <mat-spinner [diameter]="60" class="screen-spinner"></mat-spinner>
+    </div>
+</div>

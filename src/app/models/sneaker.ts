@@ -1,5 +1,5 @@
 export interface Sneaker{
-    id: number,
+    id?: number,
     brand: string;
     silhouette: string;
     nickname: string;
@@ -12,6 +12,6 @@ export interface Sneaker{
     productDesc?: string;
     sku?: string;
     colorway?: string;
-    userID?: string;
+    userID?: number;
     holding?: boolean;
 }

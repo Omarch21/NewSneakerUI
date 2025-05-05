@@ -1,0 +1,37 @@
+:host {
+    display:flex;
+}
+
+.snackbar{
+    width:400px;
+    display:flex;
+    border-radius:10px;
+    color:black;
+
+    .label-span{
+        width:75%;
+        font-size:16px;
+    }
+
+    .label-command{
+        width:25%;
+    }
+}
+
+.action-button {
+    background-color: rgb(158, 10, 10);
+    color:white!;
+    color: white;
+    outline: none;
+    border: none;
+    width: 110px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius:10px;
+    margin-left:10px;
+}
+
+.action-button:hover {
+    background-color: rgb(90, 15, 15);
+}

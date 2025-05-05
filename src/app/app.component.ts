@@ -4,9 +4,10 @@ import { AuthService } from './components/register-login/service/auth.service';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, RouterLink, CommonModule, RouterModule,MatProgressSpinnerModule],
+    imports: [RouterOutlet, RouterLink, CommonModule, RouterModule,MatProgressSpinnerModule, MatTooltipModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })

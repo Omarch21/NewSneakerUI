@@ -1,0 +1,61 @@
+<div class="editscreen">
+    <header>
+        <button mat-button class="close-icon" (click)="close()" matTooltip="Close" matTooltipPosition="above">
+            <span class="material-icons-outlined">
+                close
+            </span>
+        </button>
+        <span class="title">Edit</span>
+        <button mat-button class="delete-icon" (click)="deleteShoe(data.id)" matTooltip="Delete shoe" matTooltipPosition="above">
+            <span class="material-icons-outlined">
+                delete
+            </span>
+        </button>
+    </header>
+   
+    <form class="edit-form" [formGroup]="editShoeForm" style="gap:20px;">
+        <div class="form-row">
+            <div class="form-field">
+                <span>Brand</span>
+                <select type="text" placeholder="Brand" class="dropdowns" formControlName="brand">
+                    <option selected>Pick Brand</option>
+                    <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <span>Silhouette</span>
+                <input type="text" class="input-box" formControlName="silhouette">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+                <span>Name</span>
+                <input type="text" class="input-box" formControlName="name">
+            </div>
+            <div class="form-field">
+                <span>Shoe Size</span>
+                <select type="text" class="dropdowns" formControlName="shoeSize">
+                    <option selected>Size</option>
+                    <option *ngFor="let size of shoeSizes" value={{size}}>{{size}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-field">
+                <span>Cost</span>
+                <input type="text" class="input-box" formControlName="cost">
+            </div>
+            <div class="form-field">
+                <span>Resell URL</span>
+                <input type="text" class="input-box" formControlName="resellURL">
+            </div>
+        </div>
+    </form>
+    <div class="button-group-edit">
+        <button (click)="updateShoe(data)" style="margin-top:20px;">Update</button>
+    </div>
+
+    <div class="main-loading-screen" *ngIf="isLoading()">
+        <mat-spinner [diameter]="60" class="screen-spinner"></mat-spinner>
+    </div>
+</div>

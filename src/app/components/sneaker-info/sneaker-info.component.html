@@ -1,0 +1,154 @@
+<main>
+    <button class="undo" (click)="goBack();" matTooltip="Go Back" matTooltipPosition="above">
+        <span class="material-icons-outlined">
+            undo
+        </span>
+    </button>
+    <div class="flex-grid">
+        <div class="info info-brand">
+            <span class="material-icons-outlined icon">
+                local_mall
+            </span>
+            <div class="info-content">
+                <span class="title">Brand</span>
+                {{sneaker?.brand}}
+            </div>
+        </div>
+        <div class="info info-silhouette">
+            <span class="material-icons-outlined icon">
+                accessibility
+            </span>
+            <div class="info-content">
+                <span class="title">Silhouette</span>
+                {{sneaker?.silhouette}}
+            </div>
+        </div>
+        <div class="info info-name">
+            <span class="material-icons-outlined icon">
+                badge
+            </span>
+            <div class="info-content">
+                <span class="title">Name</span>
+                {{sneaker?.nickname}}
+            </div>
+        </div>
+        <div class="info info-release">
+            <span class="material-icons-outlined icon">
+                event
+            </span>
+            <div class="info-content">
+                <span class="title">Release Date</span>
+                {{sneaker?.releaseDate}}
+            </div>
+        </div>
+        <div class="info info-colorway">
+            <span class="material-icons-outlined icon">
+                format_paint
+            </span>
+            <div class="info-content">
+                <span class="title">Colorway</span>
+                {{sneaker?.colorway}}
+            </div>
+        </div>
+        <div class="info info-resell">
+            <span class="material-icons-outlined icon">
+                sell
+            </span>
+            <div class="info-content">
+                <span class="title">Current Resell</span>
+                ${{sneaker?.resellPrice}}
+            </div>
+        </div>
+
+        <div class="info info-retail">
+            <div class="retail-header">
+                <span class="material-icons-outlined icon">
+                    local_atm
+                </span>
+                <span class="title">Cost</span>
+            </div>
+            <div class="info-content">
+                <span>Retail ${{sneaker?.retail}}</span>
+                <span>Tax ${{sneaker?.retail!/10}}</span>
+                <span class="total-price">Total ${{sneaker?.retail! + (sneaker?.retail!/10)}}</span>
+            </div>
+        </div>
+        <div class="info info-5"></div>
+        <div class="shoe-img">
+            <img [src]="sneaker?.photoURL">
+        </div>
+        <div class="side-info-top" [ngStyle]="{ color: (sneaker?.resellPrice! - sneaker?.retail!) < 0 ? 'red' : 'green'}">
+            <div class="header-icon">
+                <span class="material-icons-outlined money-icon">
+                    attach_money
+                </span>
+                <h2>Analysis</h2>
+            </div>
+            <p>{{(sneaker?.resellPrice! - sneaker?.retail!) | currency}}</p>
+            <span class="material-icons-outlined" *ngIf="sneaker?.resellPrice! > sneaker?.retail!">
+                trending_up
+            </span>
+            <span class="material-icons-outlined" *ngIf="sneaker?.resellPrice! < sneaker?.retail!">
+                trending_down
+            </span>
+            <p>{{getPercentage(sneaker?.resellPrice, sneaker?.retail) | number: '1.2-2'}}%</p>
+            <svg class="wave" viewBox="0 0 1440 320" preserveAspectRatio="none"
+                [ngStyle]="{ fill: (sneaker?.resellPrice! - sneaker?.retail!) < 0 ? 'rgba(209, 8, 8, 0.815)' : 'rgba(0, 128, 0, 0.699)'}"
+                [style.height]="getPercentage(sneaker?.resellPrice, sneaker?.retail)*2">
+                <path fill-opacity="1"
+                    d="M0,100C60,80,120,120,180,100C240,80,300,120,360,100C420,80,480,120,540,100C600,80,660,120,720,100C780,80,840,120,900,100C960,80,1020,120,1080,100C1140,80,1200,120,1260,100C1320,80,1380,120,1440,100L1440,320L0,320Z" />
+            </svg>
+
+        </div>
+        <div class="side-info">
+            <span>Description</span>
+            <div>
+                {{sneaker?.productDesc}}
+            </div>
+        </div>
+    </div>
+
+    <div class="graph" #graph>
+        <apx-chart
+        [series]="chartOptions.series!"
+        [chart]="chartOptions.chart!"
+        [xaxis]="chartOptions.xaxis!"
+        [dataLabels]="chartOptions.dataLabels!"
+        [grid]="chartOptions.grid!"
+        [stroke]="chartOptions.stroke!"
+        [title]="chartOptions.title!"
+        [markers]="chartOptions.markers!"
+        [yaxis]="chartOptions.yaxis!"
+        [fill]="chartOptions.fill!"></apx-chart>
+    </div>
+
+    <div class="price-table">
+        <table>
+            <thead>
+                <tr>
+                    <th> Sneaker </th>
+                    <th> Total Cost </th>
+                    <th (click)="sort('price')"> Resell Cost <span *ngIf="sortColumns === 'price'" style="width:5px;">{{sortDirection === 'asc' ? '↑' : '↓'}}</span></th>
+                    <th (click)="sort('date')"> Date <span *ngIf="sortColumns === 'date'">{{sortDirection === 'asc' ? '↑' : '↓'}}</span></th>
+                    <th> Price Difference </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of getLast10(tableData), let i = index">
+                    <td> {{data.name}}" </td>
+                    <td> {{data.totalCost | currency}} </td>
+                    <td> {{data.price | currency}} </td>
+                    <td> {{data.date}} </td>
+                    <td> {{data.priceDifference | currency}} 
+                        <span class="material-icons-outlined" style="color:green;" *ngIf="data.price > sneaker?.retail!">
+                        arrow_upward
+                        </span>
+                        <span class="material-icons-outlined" style="color:red;" *ngIf="data.price < sneaker?.retail!">
+                            arrow_downward
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>

@@ -1,0 +1,39 @@
+.main-screen{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    .d-actions{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .close-button{
+        position:absolute;
+        left:10px;
+        top:10px;
+        height:30px;
+        width:30px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .action-button{
+        background-color: rgb(158, 10, 10);
+        color: white;
+        outline: none;
+        border: none;
+        width: 60px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius:10px;
+    }
+
+    .action-button:hover {
+        background-color: rgb(90, 15, 15);
+    }
+}

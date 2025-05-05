@@ -1,0 +1,295 @@
+.screen {
+    height: 100%;
+    width: 100%;
+    position:relative;
+}
+
+.tab {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .tab-content {
+        width: 100%;
+        height: 85%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background-color: white;
+
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        
+        .search-div {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            position:relative;
+
+            .input-box {
+                width: 558px;
+                height: 40px;
+                outline: none;
+                border: none;
+                box-shadow: 0 4px 8px 1px rgba(224, 224, 224, 0.541);
+                border: 1px solid rgb(170, 170, 170);
+                box-sizing:border-box;
+            }
+
+            span{
+                position:absolute;
+                right:5px;
+                cursor:pointer;
+                color:rgb(110, 107, 107);
+            }
+        }
+    }
+
+    .tab-commands {
+        height: 15%;
+        width: 100%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            span{
+                font-size:32px;
+            }
+        }
+    }
+
+    .dropdowns {
+        width: 120px;
+        height: 40px;
+        outline: none;
+        box-shadow: 0 1px 10px 1px rgba(179, 179, 179, 0.171);
+        border: 1px solid rgb(219, 219, 219);
+        padding-left:5px;
+        border-radius:5px;
+        background:none;
+    }
+}
+
+.tab-title {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    font-size: 26px;
+    background-color: rgb(158, 10, 10);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 3px 8px 1px rgb(187, 187, 187);
+    z-index:2;
+
+    .left-command, .right-command {
+        height:100%;
+        width:10%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        span{
+            cursor:pointer;
+        }
+
+        ::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+            stroke: white !important;
+        }
+    }
+
+    .title{
+        width:80%;
+        height:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+}
+
+.input-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 50px;
+}
+
+.shoeResult {
+    width: 550px;
+    height: 50px;
+    padding: 3px;
+    display: flex;
+    box-shadow: 0 1px 3px 1px rgb(224, 224, 224);
+    border: 1px solid rgb(170, 170, 170);
+    cursor: pointer;
+
+    img {
+        height: 50px;
+        width: 75px;
+    }
+
+    .shoe-text {
+        margin-left: 50px;
+        height: 100%;
+        display: flex;
+        align-items: end;
+    }
+}
+
+.shoeResult:hover {
+    border: 1px solid rgb(211, 38, 38);
+}
+
+
+.hidden {
+    display: none;
+}
+
+.input-box {
+    width: 200px;
+    height: 40px;
+    outline: none;
+    border: none;
+    box-shadow: 0 1px 10px 1px rgba(179, 179, 179, 0.171);
+    border: 1px solid rgb(219, 219, 219);
+    padding-left:5px;
+    border-radius:5px;
+    box-sizing:border-box;
+}
+
+.add-sneaker{
+    margin-top:20px;
+        background-color: rgb(158, 10, 10);
+        color: white;
+        outline: none;
+        border: none;
+        width: 250px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius:20px;
+        transition: ease-in 0.15s;
+}
+
+.add-sneaker:hover{
+        background-color: rgb(90, 15, 15);
+}
+
+.disabled{
+    background-color:rgba(143, 143, 143, 0.356);
+    cursor:default;
+}
+
+.disabled:hover{
+    background-color:rgba(143, 143, 143, 0.356);
+}
+
+.main-loading-screen{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background:rgba(185, 185, 185, 0.4);
+    z-index:9;
+    .screen-spinner{
+        position:fixed;
+        top:50%;
+        left:48%;
+        z-index:10;
+    }
+}
+/*
+
+.silhouette-input-div,
+.brand-select,
+.size-input-div,
+.price-div {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.silhouette-input-div,
+.price-div {
+    justify-content: flex-start;
+    
+}
+
+.input-box {
+    width: 200px;
+    height: 30px;
+    outline: none;
+    border: none;
+    box-shadow: 0 1px 3px 1px rgb(224, 224, 224);
+    border: 1px solid rgb(170, 170, 170);
+}
+
+.dropdowns {
+    width: 120px;
+    height: 35px;
+    box-shadow: 0 1px 3px 1px rgb(224, 224, 224);
+    border: 1px solid rgb(170, 170, 170);
+    outline: none;
+}
+
+.search-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .input-box {
+        width: 550px;
+    }
+
+}
+
+
+
+.loading-screen {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.shoeResult:hover {
+    border: 1px solid rgb(211, 38, 38);
+}
+
+.addbtn {
+    background-color: rgb(211, 38, 38);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(235, 235, 235);
+    font-weight: bold;
+    border: none;
+    width: 150px;
+    height: 30px;
+    cursor: pointer;
+}*/
