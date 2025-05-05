@@ -4,23 +4,24 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, finalize, map, Observable, of, tap, throwError } from "rxjs";
 import { LoginRequest } from "../models/loginRequest";
 import { User } from "../../../models/user";
+import { environment } from "../../../../environments/environment";
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService{
+    private url = environment.apiUrl
     private isLoggedInSubject= new BehaviorSubject<boolean>(false);
-    private isLoggedInSubject2= new BehaviorSubject<boolean>(false);
     constructor(public http: HttpClient){
     }
 
 
     RegisterUser(user: RegisterUser): Observable<any>{
-        const url = 'https://localhost:7017/api/User/register';
+        const url = `${this.url}/User/register`;
         return this.http.post(url,{username: user.username, password: user.password}, {withCredentials: true});
     }
     
     loginUser(user: LoginRequest): Observable<string>{
-        const url = 'https://localhost:7017/api/User/login'
+        const url = `${this.url}/User/login`
         return this.http.post(url,{username: user.email, password: user.password}, {responseType: 'text', withCredentials: true}).pipe(
             tap((data:any)=>{
                 localStorage.setItem("accessToken",data);
@@ -30,7 +31,7 @@ export class AuthService{
     }
 
     logoutUser(): Observable<any>{
-        const url = 'https://localhost:7017/api/User/logout';
+        const url = `${this.url}/User/logout`;
         return this.http.post(url,{}, {withCredentials: true}).pipe(
             tap((data:any)=>{
                 localStorage.removeItem('accessToken');
@@ -40,12 +41,12 @@ export class AuthService{
     }
     
     getLoggedInUserData(): Observable<User>{
-        const url = 'https://localhost:7017/api/User/GetUserData';
+        const url = `${this.url}/User/GetUserData`;
         return this.http.get<User>(url, {withCredentials: true})
     }
 
     checkLoggedIn(): Observable<boolean> {
-        const url = 'https://localhost:7017/api/User/isAuthenticated';
+        const url = `${this.url}/User/isAuthenticated`;
         return this.http.get<boolean>(url, {withCredentials: true}).pipe(
             tap(data=>{
                 this.isLoggedInSubject.next(data);
@@ -62,7 +63,7 @@ export class AuthService{
     }
 
     refreshAccessToken():Observable<string>{
-        const url = 'https://localhost:7017/api/User/refresh-token';
+        const url = `${this.url}/User/refresh-token`;
         return this.http.post(url,{},{withCredentials: true, responseType: 'text'}).pipe(
             tap((token:any)=>{
                 localStorage.setItem('accessToken',token);
